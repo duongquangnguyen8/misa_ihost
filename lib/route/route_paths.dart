@@ -6,4 +6,5 @@ class RoutePaths {
   static const String home = '/home';
   static const String login = '/login';
   static const String profile = '/profile';
+  static const String confirmOtp = '/confirm-otp';
 }

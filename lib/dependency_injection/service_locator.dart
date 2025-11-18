@@ -1,25 +1,18 @@
 import 'package:get_it/get_it.dart';
-import 'package:dio/dio.dart';
-
+import 'package:misa_ihost/config/dio/dio_client.dart';
+import 'package:misa_ihost/core/constans/api_paths.dart';
+import 'package:misa_ihost/repository/auth_repo/auth_repo.dart';
+import 'package:misa_ihost/repository_impl/auth_impl/auth_repo_impl.dart';
 
 final sl = GetIt.instance;
 
 Future<void> initServiceLocator() async {
   // Register Dio
-  sl.registerLazySingleton<Dio>(() {
-    final dio = Dio();
-    dio.options = BaseOptions(
-      baseUrl: "https://api.example.com",
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 10),
-    );
-
-    // Add interceptors here if needed
-    return dio;
+  sl.registerLazySingleton<DioClient>(() {
+    return DioClient(isCheckToken: true, baseUrl: ApiPaths.baseUrl);
   });
 
-  // Register Repository
-  // sl.registerLazySingleton<AuthRepository>(
-  //   () => AuthRepositoryImpl(sl<Dio>()),
-  // );
+  //register auth_repository
+  sl.registerSingleton<AuthRepo>(AuthRepoImpl(dioClient: sl<DioClient>()));
+  
 }
