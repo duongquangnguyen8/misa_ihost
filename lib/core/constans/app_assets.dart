@@ -6,6 +6,7 @@ class AssetImages {
   static const String icon_menu = 'assets/icons/icon_menu.png';
   static const String icon_person = 'assets/icons/icon_person.png';
   static const String icon_list = 'assets/icons/icon_list.png';
+  static const String icon_reload = 'assets/icons/icon_reload.png';
 
   //images
   static const String img_logo_misa = 'assets/images/img_logo_misa.png';

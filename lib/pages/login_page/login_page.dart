@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:misa_ihost/core/constans/app_assets.dart';
 import 'package:misa_ihost/core/constans/app_colors.dart';
 import 'package:misa_ihost/dependency_injection/service_locator.dart';
-import 'package:misa_ihost/pages/home_page/home_page.dart';
 import 'package:misa_ihost/pages/login_page/login_controller.dart';
 import 'package:misa_ihost/repository/auth_repo/auth_repo.dart';
 import 'package:misa_ihost/route/app_navigator.dart';

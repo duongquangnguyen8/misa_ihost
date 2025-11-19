@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:misa_ihost/helper/widget_helper.dart';
 import 'package:misa_ihost/models/response_common.dart';
 import 'package:misa_ihost/core/exceptions/api_exception.dart';
@@ -14,9 +14,11 @@ class AppInterceptors extends Interceptor {
     // Thêm token vào header
     // options.headers['Authorization'] = "Bearer ...";
     final token = "asdd"; // get local storage
-    print("➡️ REQUEST: ${options.method} ${options.path}");
-    print("Headers: ${options.headers}");
-    print("Data: ${options.data}");
+    if (kDebugMode) {
+      print("➡️ REQUEST: ${options.method} ${options.path}");
+      print("Headers: ${options.headers}");
+      print("Data: ${options.data}");
+    }
 
     // Example condition to check if token should be added
     if (isCheckToken) {
@@ -28,7 +30,10 @@ class AppInterceptors extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     // Log raw response
-    print("⬅️ RESPONSE: ${response.statusCode} ${response.data}");
+
+    if (kDebugMode) {
+      print("⬅️ RESPONSE: ${response.statusCode} ${response.data}");
+    }
 
     try {
       // If the API wraps responses in the ResponseCommon structure,
@@ -72,7 +77,6 @@ class AppInterceptors extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     // Map DioException to ApiException for consistency
-    print(err);
     // Nếu có response trả về từ server
     if (err.response != null) {
       debugPrint('📡 STATUS CODE: ${err.response?.statusCode}');

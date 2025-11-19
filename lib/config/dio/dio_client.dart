@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:dio/src/response.dart' show Response;
 import 'package:misa_ihost/config/dio/dio_interceptors.dart';
 import 'package:misa_ihost/core/constans/api_paths.dart';
 

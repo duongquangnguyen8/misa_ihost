@@ -18,7 +18,7 @@ class LoginResponse {
     refreshToken = json['RefreshToken'];
     tokenTimeout = json['TokenTimeout'];
     context = json['Context'] != null
-        ? new ContextModel.fromJson(json['Context'])
+        ? ContextModel.fromJson(json['Context'])
         : null;
   }
 
